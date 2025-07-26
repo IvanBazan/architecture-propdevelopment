@@ -1,0 +1,35 @@
+@startuml
+title Внешние интеграции для реализации умного дома
+
+left to right direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Context.puml
+
+Person(user, "Клиент", "Пользователь собственник")
+
+System(propDev, "propDevelopment", "система компании Prop Development" )
+
+System_Boundary(propDev, "") {
+    System(clientApp , "app", "клиентское приложение")
+    System(tenantSystem , "tenantSystem", "Система работающая с собственниками (бывш. Группа сервисов ЖКУ)")
+    System(auth , "authService", "система аутентификации")
+}
+
+System_Boundary(external, "Внешние системы") {
+    System_Ext(houseGate , "Система управления шлагбаумами", "")
+    System_Ext(houseIntercom , "Система управления видеодомофонами", "")
+}
+
+Rel(user, clientApp, "использует приложение")
+
+Rel(clientApp, auth, "аутентификация в приложении")
+
+Rel(clientApp, tenantSystem, "")
+
+Rel(user, houseGate, "использует шлагбаум")
+Rel(user, houseIntercom, "использует домофон")
+
+Rel(clientApp, houseGate, "администрирование шлагбаума")
+Rel(clientApp, houseIntercom, "администрирование домофона")
+
+@enduml

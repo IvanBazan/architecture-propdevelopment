@@ -2,7 +2,6 @@
 
 NAMESPACE="rbac-propdev"
 
-# Создание service accounts
 kubectl create serviceaccount admin-user -n $NAMESPACE
 kubectl create serviceaccount reader-user -n $NAMESPACE
 kubectl create serviceaccount writer-user -n $NAMESPACE

@@ -1,0 +1,48 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: reader
+  namespace: rbac-propdev
+subjects:
+- kind: User
+  name: user_reader
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: user_reader
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-secrets
+  namespace: rbac-propdev
+subjects:
+- kind: User
+  name: writer-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: user_writer
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-secrets
+  namespace: rbac-propdev
+subjects:
+- kind: User
+  name: user_admin
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: user_admin
+  apiGroup: rbac.authorization.k8s.io
+
+
+
+
+ 
